@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platformservice
+  labels:
+    app: platformservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: platformservice
+  template:
+    metadata:
+      name: platformService
+      labels:
+        app: platformservice
+    spec:
+      containers:
+        - name: platformservice
+          image: krunalctrl/platformservice:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      
